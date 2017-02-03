@@ -94,6 +94,23 @@ public class PotterTest {
     }
 
     @Test
+    public void checkoutWithOneOfEach() {
+        Books one = new Books(2, "Hp two");
+        shoppingBag.add(one);
+        Books three = new Books(1, "Hp one");
+        shoppingBag.add(three);
+        Books six = new Books(3, "Hp three");
+        shoppingBag.add(six);
+        Books seven = new Books(4, "Hp four");
+        shoppingBag.add(seven);
+        Books eight = new Books(5, "Hp five");
+        shoppingBag.add(eight);
+
+        assertEquals(potter.checkout(shoppingBag), 32.0, 0.01);
+
+    }
+
+    @Test
     public void checkoutWithLastRequirement() {
         Books one = new Books(2, "Hp two");
         shoppingBag.add(one);
