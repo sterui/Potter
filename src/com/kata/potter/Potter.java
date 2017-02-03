@@ -25,8 +25,8 @@ public class Potter {
     private double calculateTotal(List<Books> shoppingBag) {
 
         double total= 0.0;
-        for (int i=0;i<shoppingBag.size();i++) {
-            total += shoppingBag.get(i).getPrice();
+        for (Books temp : shoppingBag) {
+            total += temp.getPrice();
         }
         return total;
     }
@@ -34,14 +34,14 @@ public class Potter {
     private void checkOrder(List<Books> shoppingBag) {
 
         int diffBooks =0;
-        for (int i=0;i<shoppingBag.size();i++) {
-            for (int j=0;j<shoppingBag.size();j++) {
-                if (shoppingBag.get(i).getId() != shoppingBag.get(j).getId()) {
+        for (Books first : shoppingBag) {
+            for (Books second: shoppingBag) {
+                if (first.getId() != second.getId()) {
                     diffBooks++;
                 }
             }
                 if (diffBooks > 0) {
-                    shoppingBag.get(i).setPrice(calculatePercentage(checkDiscount(diffBooks)));
+                    first.setPrice(calculatePercentage(checkDiscount(diffBooks)));
                     diffBooks = 0;
                 }
 
@@ -49,7 +49,7 @@ public class Potter {
     }
 
     private double checkDiscount(int diffBooks) {
-        double discount ;
+        double discount;
         switch (diffBooks) {
             case 1:
                 discount = 5.0;
